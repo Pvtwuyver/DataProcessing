@@ -1,1 +1,2 @@
-vraag 5:
+vraag 5:met een Branch kun je verschillende versies van code opslaan, waarbij je altijd terug kunt gaan naar de oude versies indien 
+er bugs in de code blijken te zitten.
