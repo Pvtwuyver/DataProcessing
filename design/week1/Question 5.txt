@@ -1,0 +1,2 @@
+Een Branch op Github maakt het mogelijk om verschillende versies van een programma te schrijven, waarbij je altijd weer terug kunt
+keren naar de 'oude versie' indien er een fout in blijkt te zijn ontstaan.
