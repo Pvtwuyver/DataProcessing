@@ -18,7 +18,7 @@ TARGET_URL = "http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,
 BACKUP_HTML = 'tvseries.html'
 OUTPUT_CSV = 'tvseries.csv'
 
-
+scraperesults = []
 def extract_tvseries(dom):
     '''
     Extract a list of highest rated TV series from DOM (of IMDB page).
@@ -31,32 +31,52 @@ def extract_tvseries(dom):
     - Runtime (only a number!)
     '''
 
-# import requests
-# from BeautifulSoup import BeautifulSoup
+    url = URL("http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,desc&start=1&title_type=tv_series")
+    dom = DOM(url.download(cached=True))
+    
+    serie = []
+    titles = []
+    ratings = []
+    runtimes = []
+    genres = []   
+    actors = []
+    # get all serie titles
+    for e in dom.by_tag("div.pagecontent"): 
+        for a in e.by_tag("div.lister-item mode-advanced"): 
+            for d in a.by_tag("div.lister-item-content"): 
+                for c in d.by_tag("h3.lister-item-header"):
+                    for f in c.by_tag("a."):
+                        title = plaintext(f.content)
+                        titles.append(title)
+                        serie.append(title)
+                # get corresponding ratings
+                for h in d.by_tag("div.ratings-bar"):
+                    for i in h.by_tag("div.inline-block ratings-imdb-rating"):
+                        rating = plaintext(i.content)
+                        ratings.append(rating)
+                        serie.append(rating)
+                # get genres and runtime
+                for j in d.by_tag("p.text-muted"):
+                    for k in j.by_tag("span.genre"):
+                        genre = plaintext(k.content)
+                        genres.append(genre) 
+                        serie.append(genre)
+                    for m in j.by_tag("span.runtime"):
+                        runtime = plaintext(m.content)
+                        # remove last 4 characters ( min)
+                        runtime = runtime[:-4]
+                        runtimes.append(runtime)
+                        serie.append(runtime)
+                # get Actors
+                for l in d.by_tag("p.")[2].by_tag("a"):
+                        actor = plaintext(l.content)
+                        actors.append(actor)
+                        serie.append(actor)
 
-# url = TARGET_URL
-# response = requests.get(url)
-# html = response.content
+    scraperesults.append(serie)
 
-# soup = BeautifulSoup(html)
-# title = soup.find("h3", class_="lister-item-header")
-# print title()
-
-url = URL("http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,desc&start=1&title_type=tv_series")
-dom = DOM(url.download(cached=True))
-#print dom.body.content
-for e in dom.by_tag("div.lister-list"): 
-    for a in e.by_tag("a.lister-item mode-advanced"): 
-        print plaintext(a.content)
-        print a.attrs["href"]
-        print
-
-    # ADD YOUR CODE HERE TO EXTRACT THE ABOVE INFORMATION ABOUT THE
-    # HIGHEST RATED TV-SERIES
-    # NOTE: FOR THIS EXERCISE YOU ARE ALLOWED (BUT NOT REQUIRED) TO IGNORE
-    # UNICODE CHARACTERS AND SIMPLY LEAVE THEM OUT OF THE OUTPUT.
-
-    # return []  # replace this line as well as appropriate
+    print scraperesults
+    return [scraperesults]  
 
 
 def save_csv(f, tvseries):
@@ -65,8 +85,7 @@ def save_csv(f, tvseries):
     '''
     writer = csv.writer(f)
     writer.writerow(['Title', 'Rating', 'Genre', 'Actors', 'Runtime'])
-
-    # ADD SOME CODE OF YOURSELF HERE TO WRITE THE TV-SERIES TO DISK
+    writer.writerows(scraperesults)
 
 if __name__ == '__main__':
     # Download the HTML file
