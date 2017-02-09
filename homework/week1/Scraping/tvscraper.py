@@ -41,41 +41,39 @@ def extract_tvseries(dom):
     dom = DOM(url.download(cached=True))
     
     # get all serie titles
-    for e in dom.by_tag("div.pagecontent"): 
+    for e in dom.by_tag("div.pagecontent")[0].by_tag("div.lister-item mode-advanced"): 
         # mainloop over all series
-        for a in e.by_tag("div.lister-item mode-advanced"): 
-            # create serie-dicionary with Key fieldnames
-            serie = {}
-            for d in a.by_tag("div.lister-item-content"): 
-                for c in d.by_tag("h3.lister-item-header"):
-                    for f in c.by_tag("a."):
-                        title = plaintext(f.content)
-                        serie["Title"]= convert_unicode(title)
-                # get corresponding ratings
-                for h in d.by_tag("div.ratings-bar"):
-                    for i in h.by_tag("div.inline-block ratings-imdb-rating"):
-                        rating = plaintext(i.content)
-                        serie["Rating"]= rating
-                # get genres and runtime
-                for j in d.by_tag("p.text-muted"):
-                    for k in j.by_tag("span.genre"):
-                        genre = plaintext(k.content)
-                        serie["Genre"]= convert_unicode(genre)
-                    for m in j.by_tag("span.runtime"):
-                        runtime = plaintext(m.content)
-                        # remove last 4 characters (=minutes)
-                        runtime = runtime[:-4]
-                        serie["Runtime"]= runtime
-                # get Actors
-                actors = []
-                for l in d.by_tag("p.")[2].by_tag("a"):
-                        actor = plaintext(l.content)
-                        actors.append(actor)
-                # comma seperate actors in one field
-                serie["Actors"]= convert_unicode(", ".join(actors))
+        serie = {}
+        for d in e.by_tag("div.lister-item-content"): 
+            for c in d.by_tag("h3.lister-item-header"):
+                for f in c.by_tag("a."):
+                    title = plaintext(f.content)
+                    serie["Title"]= convert_unicode(title)
+            # get corresponding ratings
+            for h in d.by_tag("div.ratings-bar"):
+                for i in h.by_tag("div.inline-block ratings-imdb-rating"):
+                    rating = plaintext(i.content)
+                    serie["Rating"]= rating
+            # get genres and runtime
+            for j in d.by_tag("p.text-muted"):
+                for k in j.by_tag("span.genre"):
+                    genre = plaintext(k.content)
+                    serie["Genre"]= convert_unicode(genre)
+                for m in j.by_tag("span.runtime"):
+                    runtime = plaintext(m.content)
+                    # remove last 4 characters (=minutes)
+                    runtime = runtime[:-4]
+                    serie["Runtime"]= runtime
+            # get Actors
+            actors = []
+            for l in d.by_tag("p.")[2].by_tag("a"):
+                    actor = plaintext(l.content)
+                    actors.append(actor)
+            # comma seperate actors in one field
+            serie["Actors"]= convert_unicode(", ".join(actors))
 
-            # create scraperesults dictionary
-            scraperesults.append(serie)
+        # create scraperesults dictionary
+        scraperesults.append(serie)
 
     return scraperesults  
 
