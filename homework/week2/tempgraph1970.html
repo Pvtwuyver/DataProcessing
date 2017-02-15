@@ -18,7 +18,7 @@ Displays the average temperature in De Bilt in the year 1970
 <script>
     // load data from external file
     var txtFile = new XMLHttpRequest();
-    txtFile.open("GET", "/KNMI_19701231_cleaned.txt", true);
+    txtFile.open("GET", "KNMI_19701231_cleaned.txt", true);
     txtFile.onreadystatechange = function() {
         if (txtFile.readyState === 4) { // Makes sure the document is ready to parse
             if (txtFile.status === 200) { // Makes sure the file is found
