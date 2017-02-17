@@ -8,9 +8,8 @@ Displays the average temperature in De Bilt in the year 1970
 </head>
 
 <body>
-    <p>Opdracht 2, Dataprocessing</p>
-    <p>Peter van Twuyver, 10872809</p>
-
+    <h2>Opdracht 2, Vak Dataprocessing</h2> 
+    <h3>Peter van Twuyver, 10872809</h3>
     <canvas id="myCanvas" height="700" width="1000" </canvas>
 
 </body>
@@ -33,6 +32,7 @@ Displays the average temperature in De Bilt in the year 1970
                 var ctx = canvas.getContext('2d');
                 // RECTANGLE:
                 ctx.strokeStyle = 'grey';
+                
                 ctx.strokeRect(50, 50, 900, 500);
                 // TEXT:
                 ctx.font = '20px serif';
@@ -68,7 +68,7 @@ Displays the average temperature in De Bilt in the year 1970
                     ctx.lineTo(x, y);
                     ctx.moveTo(x, y);
                     ctx.lineWidth = 2;
-                    ctx.strokeStyle = 'green';
+                    ctx.strokeStyle = 'red';
                 }
                 ctx.stroke();
                 // create line for 0 degrees celcius
@@ -95,6 +95,7 @@ Displays the average temperature in De Bilt in the year 1970
                 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
                 var day = 0;
                 for (var i = 0; i < 12; i++) {
+                    
                     ctx.fillText(months[i], 70 + day, 560);
                     day = day + 75;
                 }
