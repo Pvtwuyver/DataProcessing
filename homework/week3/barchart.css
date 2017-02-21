@@ -3,14 +3,15 @@
     right: 50px;
     width: 200px;
     border: 3px solid steelblue;
+    font: 12px sans-serif;	
     padding: 10px;
 }
 
 .pagetitle {
 	position: relative;
-	text-align: right;
-    right: 100px;
-    padding: 20px;
+	text-align: left;
+	font: 16px sans-serif;	
+    padding: 10px;
 }
 
 .bar{
