@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Peter van Twuyver, student number 10872809, feb 2017 
+WEEKOPDRACHT 3, BARCHART IN D3 
+
+--------------  USE python -m SimpleHTTPServer 8888 for local server ----------------------
+
+//-->
+<title>D3 Barchart Reactietijden Brandweer</title>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>d3.selectAll("*").style("background-color","whitesmoke")</script>
+<link rel="stylesheet" type="text/css" href="barchart.css">
+</head>
+
+<body>
+
+<div class="pagetitle"><p>Week 3 dataprocessing, Peter van Twuyver</p></div>
+
+<div class="right">
+  <p><b>Gemiddelde starttijd: </b>De gemiddelde tijd tussen de aanname van een melding door de meldkamer en de aanname door de brandweercentralist in de meldkamer.</p>
+<p><b>Gemiddelde alarmeringstijd: </b>De gemiddelde tijd tussen de aanname door de brandweercentralist en de alarmering van een eenheid van de brandweer.</p>
+<p><b>Gemiddelde uitruktijd: </b>De gemiddelde tijd tussen de alarmering van een eenheid van de brandweer en de vertrektijd uit de kazerne.</p>
+<p><b>Gemiddelde rijtijd: </b>De gemiddelde tijd tussen de vertrektijd van de brandweereenheid uit de kazerne en de aankomst ter plaatse bij het incident.</p> 
+<p><b>Gemiddelde responstijd: </b>De som van gemiddelde alarmeringstijd, uitruktijd en rijtijd</P>
+
+<p>Bron: <a href="http://statline.cbs.nl/StatWeb/publication/?VW=T&DM=SLNL&PA=83123NED&LA=NL">Centraal Plan Bureau</a></p>
+</div>
+
+<script src="barchart.js"></script>
+</body>
+
+</html>
