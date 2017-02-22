@@ -6,8 +6,8 @@ var margin = {
         bottom: 200,
         left: 100
     },
-width = 1000 - margin.left - margin.right,
-height = 600 - margin.top - margin.bottom;
+    width = 1000 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 
 // set the ranges, small gap between the bars (0.05)
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
@@ -53,23 +53,25 @@ d3.json("reactietijden.json", function(error, data) {
     x.domain(data.map(function(d) {
         return d.Regio;
     }));
-    // scale y axis .5 higher for lay-out purpose
+    // scale y axis .5 extra for lay-out purpose
     y.domain([0, 0.5 + d3.max(data, function(d) {
         return d.responsetijd;
     })]);
 
     // chart title
     svg.append('text')
-            .text('Gemiddelde Reactietijden Brandweer in Nederlandse Regios in 2015')
-            .attr('x', 200)
-            .attr('y', 0)
-            .attr('fill', 'black')
+        .attr("class", "title")
+        .text('Gemiddelde Reactietijden Brandweer in Nederlandse Regios in 2015')
+        .attr('x', 200)
+        .attr('y', 0)
+        .attr('fill', 'black')
     // chart title
     svg.append('text')
-            .text('(Regio)')
-            .attr('x', 850)
-            .attr('y', 400)
-            .attr('fill', 'black')
+        .attr("class", "axis")
+        .text('(Regio)')
+        .attr('x', 850)
+        .attr('y', 400)
+        .attr('fill', 'black')
     // append the two axis
     svg.append("g")
         .attr("class", "x axis")

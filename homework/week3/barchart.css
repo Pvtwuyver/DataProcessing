@@ -15,15 +15,19 @@
 }
 
 .bar{
-    fill: steelblue;
+    fill: #0099CC;
  }
 
 .bar:hover{
-    fill: red;
+    fill: #003399;
+}
+
+.title {
+	  font: 15px sans-serif;
 }
 
 .axis {
-	  font: 12px sans-serif;
+	  font: 10px sans-serif;
 }
 
 .axis path,
@@ -40,7 +44,7 @@ hover.tooltip {
     height: 90px;					
     padding: 2px;				
     font: 12px sans-serif;		
-    background: lightsteelblue;	
+    background: #CCFFCC;	
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
