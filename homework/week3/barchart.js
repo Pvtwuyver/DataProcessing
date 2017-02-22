@@ -40,7 +40,7 @@ var svg = d3.select("body").append("svg")
 // load the data
 d3.json("reactietijden.json", function(error, data) {
     data.forEach(function(d) {
-        d.Regio = d.Regio;
+        
         // change strings into real numbers
         d.starttijd = +d.starttijd;
         d.alarmeringstijd = +d.alarmeringstijd;
@@ -65,7 +65,7 @@ d3.json("reactietijden.json", function(error, data) {
         .attr('x', 200)
         .attr('y', 0)
         .attr('fill', 'black')
-    // chart title
+    // x axis title
     svg.append('text')
         .attr("class", "axis")
         .text('(Regio)')
@@ -81,6 +81,7 @@ d3.json("reactietijden.json", function(error, data) {
         .style("text-anchor", "end")
         .attr("dx", "-.8em")
         .attr("dy", "-.55em")
+        // rotate text for readability
         .attr("transform", "rotate(-45)");
     svg.append("g")
         .attr("class", "y axis")
@@ -92,7 +93,7 @@ d3.json("reactietijden.json", function(error, data) {
         .style("text-anchor", "end")
         .text("Responsetijd (Min)");
 
-    // create barchart based on total responsetime
+    // create barchart based on Total responsetime
     svg.selectAll("bar")
         .data(data)
         .enter().append("rect")
