@@ -9,8 +9,8 @@ var margin = {
 width = 1000 - margin.left - margin.right,
 height = 600 - margin.top - margin.bottom;
 
-// set the ranges
-var x = d3.scale.ordinal().rangeRoundBands([0, width]);
+// set the ranges, small gap between the bars (0.05)
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 var y = d3.scale.linear().range([height, 0]);
 
 // create the tooltip for hover effect (W3schools.com)
