@@ -61,7 +61,7 @@ d3.json("reactietijden.json", function(error, data) {
     // chart title
     svg.append('text')
         .attr("class", "title")
-        .text('Gemiddelde Reactietijden Brandweer in Nederlandse Regios in 2015')
+        .text('Gemiddelde Responsetijden Brandweer in Nederlandse Regios (2015)')
         .attr('x', 200)
         .attr('y', 0)
         .attr('fill', 'black')
