@@ -1,20 +1,19 @@
-
-// determine margins
+// code based on https://bost.ocks.org/mike/bar/3/
+// determine margins and size
 var margin = {
         top: 20,
         right: 20,
         bottom: 200,
         left: 100
     },
-    width = 1000 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+width = 1000 - margin.left - margin.right,
+height = 600 - margin.top - margin.bottom;
 
 // set the ranges
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
-
+var x = d3.scale.ordinal().rangeRoundBands([0, width]);
 var y = d3.scale.linear().range([height, 0]);
 
-// create the tooltip for hover effect
+// create the tooltip for hover effect (W3schools.com)
 var hover = d3.select("body").append("hover")
     .attr("class", "tooltip")
     .style("opacity", 0);
@@ -42,7 +41,7 @@ var svg = d3.select("body").append("svg")
 d3.json("reactietijden.json", function(error, data) {
     data.forEach(function(d) {
         d.Regio = d.Regio;
-        // change time-strings into real numbers
+        // change strings into real numbers
         d.starttijd = +d.starttijd;
         d.alarmeringstijd = +d.alarmeringstijd;
         d.uitruktijd = +d.uitruktijd;
@@ -54,7 +53,7 @@ d3.json("reactietijden.json", function(error, data) {
     x.domain(data.map(function(d) {
         return d.Regio;
     }));
-    // make y axis .5 higher for lay-out purpose
+    // scale y axis .5 higher for lay-out purpose
     y.domain([0, 0.5 + d3.max(data, function(d) {
         return d.responsetijd;
     })]);
@@ -65,8 +64,13 @@ d3.json("reactietijden.json", function(error, data) {
             .attr('x', 200)
             .attr('y', 0)
             .attr('fill', 'black')
-
-    // add the two axis
+    // chart title
+    svg.append('text')
+            .text('(Regio)')
+            .attr('x', 850)
+            .attr('y', 400)
+            .attr('fill', 'black')
+    // append the two axis
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
@@ -75,7 +79,7 @@ d3.json("reactietijden.json", function(error, data) {
         .style("text-anchor", "end")
         .attr("dx", "-.8em")
         .attr("dy", "-.55em")
-        .attr("transform", "rotate(-90)");
+        .attr("transform", "rotate(-45)");
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
@@ -102,6 +106,7 @@ d3.json("reactietijden.json", function(error, data) {
             return height - y(d.responsetijd)
         })
         // hover function with additiona information window
+        // based on code from W3schools.com
         .on("mouseover", function(d) {
             hover.transition()
                 .duration(200)
