@@ -1,0 +1,32 @@
+
+html { 
+  background: url(http://wallpapercave.com/wp/aZylDRx.jpg) no-repeat center fixed; 
+  background-size: cover;
+  color: white;
+}
+
+h3{
+    margin-top: 15%;
+    margin-left: 25%;
+    font: 25px sans-serif;	
+    color: white; 
+}
+
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: orange;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
