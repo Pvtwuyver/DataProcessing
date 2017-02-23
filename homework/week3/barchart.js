@@ -1,3 +1,9 @@
+
+// ╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+// ╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+// ╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+// student number 10872809, feb 2017 
+
 // code based on https://bost.ocks.org/mike/bar/3/
 // determine margins and size
 var margin = {
@@ -13,7 +19,7 @@ var margin = {
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 var y = d3.scale.linear().range([height, 0]);
 
-// create the tooltip for hover effect (W3schools.com)
+// create the tooltip for hover effect (based on W3schools.com)
 var hover = d3.select("body").append("hover")
     .attr("class", "tooltip")
     .style("opacity", 0);
