@@ -56,8 +56,10 @@ new Datamap({
             highlightBorderColor: '#B7B7B7',
             // show info tooltip
             popupTemplate: function(geo, data) {
-                // don't show tooltip if country not present in dataset
-                if (!data) { return ; }
+                // if country not present in dataset
+                if (!data) { return ['<div class="hoverinfo">',
+                    'No data available for this region',
+                    '</div>'].join('');}
                 // tooltip info 1960 and 2015
                 return ['<div class="hoverinfo">',
                     '<strong>', geo.properties.name, '</strong>',
