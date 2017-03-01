@@ -11,6 +11,10 @@ body {
 .text{
 	font-family: verdana;
 }
+#name{
+	text-align:right;
+	font-size:12px;
+}
 #colorlegend{
 	font: 10px sans-serif;	
 }
