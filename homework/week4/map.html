@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+student number 10872809, feb 2017 
+WEEKOPDRACHT 4, MAP IN D3 
+
+USE python -m SimpleHTTPServer 8888 for local server 
+
+//-->
+    <title>Worlpopulation d3 map</title>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="datamaps.world.min.js"></script>
+<script src="map.js"></script>
+    <link rel="stylesheet" type="text/css" href="map.css">
+</head>
+<body>
+	<div id="main">
+		<div id="title" class="text"><h4> Worldpopulation in 1960 and 2015 per country (in milions)</h4></div>
+		<div id="legend" class="text"><!-- Legend container --></div>
+		<div id="colorlegend" class="text">Colors are based on 2015.</div>
+		<div id="container" style="width: 800px; height: 500px;"></div>
+		<div id="source" class="text"><p>Source: <a href="http://data.worldbank.org/indicator/SP.POP.TOTL?end=2015&start=1969">The World Bank</a> Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.</p></div>
+	</div>
+<hr>
+<p>Interactiviteit: bij 'mouseover' over de landen wordt de grens van het land ge-highlight, maar de kleur blijft hetzelfde. In de tooltip verschijnt het inwonersaantal in miljoenen in 2015.</p><p> Achtergrondkleur is WhiteSmoke ipv gewoon White, zodat het wat rustiger is voor de ogen.<br> De landen zijn in kleurenrange van lichtrood naar zeer donkerrood, om duidelijk de verschillen aan te geven. Donkerrood associeert men vaak met drukte, gevaar etc. De dichtstbevolkte landen zijn in deze map daarom donkerrood gemaakt. De grenzen zijn lichtgrijs. Bij zwarte grenzen werd het onduidelijker.
+</p><p>Projectie is 'mercator'. Deze projectie is niet helemaal correct in perspectief, maar is wel duidelijker om als gebruiker de landen te zien.</p><p> De aantallen inwoners heb ik gedeeld door 1000000 (1 miljoen), om de leesbaarheid van de getallen duidelijker te maken in de tooltip. Het is nu duidelijk te zien hoeveel miljoenen inwoners een land heeft, terwijl de gedetaileerde informatie van het inwonersaantal niet verloren is.</p><p>De schaal met de gradient is voor de duidelijkheid in de volledige lengte bovenaan de map geplaatst. </p>
+
+</body>
+</html>

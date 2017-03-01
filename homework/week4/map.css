@@ -1,0 +1,26 @@
+/*╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+  ╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+  ╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+student number 10872809, feb 2017 
+WEEKOPDRACHT 4, Worldmap with Countrypopulation IN D3*/
+
+body {
+    background-color: whitesmoke;
+}
+
+.text{
+	font-family: verdana;
+}
+#colorlegend{
+	font: 10px sans-serif;	
+}
+/* place map on 20% from left border*/
+#main{
+	
+	margin-left:20%;
+}
+/*set small fontsize for source link under map*/
+#source{
+	font: 10px sans-serif;	
+}
+

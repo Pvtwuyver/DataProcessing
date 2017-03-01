@@ -15,11 +15,11 @@
 }
 
 .bar{
-    fill: #0099CC;
+    fill: green;
  }
 
 .bar:hover{
-    fill: #003399;
+    fill: red;
 }
 
 .title {
