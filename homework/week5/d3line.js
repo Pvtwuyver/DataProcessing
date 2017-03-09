@@ -77,7 +77,6 @@ window.onload = function() {
             })
             // create colums with exact same names as in data[0]
             data.columns = ["date", "minTemp", "maxTemp", "midTemp"];
-            console.log("data: ", data);
             // create dataset with 3 temps corresponding with date
             var temps = data.columns.slice(1).map(function(column) {
                 return {
