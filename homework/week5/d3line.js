@@ -38,8 +38,10 @@ window.onload = function() {
             var city = this.getAttribute("value");
             if (city == "Leeuwarden") {
                 datafile = "leeuwarden.json";
+                document.getElementById("demo").innerHTML = "Temperaturen Leeuwarden:";
             } else if (city == "Maastricht") {
                 datafile = "maastricht.json";
+                document.getElementById("demo").innerHTML = "Temperaturen Maastricht:";
             }
             // update the data in graph
             updateGraph(datafile);
