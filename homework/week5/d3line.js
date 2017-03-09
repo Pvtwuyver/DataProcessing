@@ -37,9 +37,9 @@ window.onload = function() {
             var datafile;
             var city = this.getAttribute("value");
             if (city == "Leeuwarden") {
-                datafile = "Leeuwarden.json";
+                datafile = "leeuwarden.json";
             } else if (city == "Maastricht") {
-                datafile = "Maastricht.json";
+                datafile = "maastricht.json";
             }
             // update the data in graph
             updateGraph(datafile);
