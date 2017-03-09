@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 
+╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+student number 10872809, feb 2017 
+WEEKOPDRACHT 5, Interactive Multiserie linegraph IN D3 
+
+USE python -m SimpleHTTPServer 8888 for local server 
+
+//-->
+    <title>Temperaturen Leeuwarden en Maastricht 2016</title>
+    <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="d3line.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="multiserie.css">
+</head>
+<body>
+    <div id="name" class="text">Peter van Twuyver, opdracht 5 Dataprocessing</div>
+    <hr>
+    <p id="graphtitle" class="text"> Min/Max temperaturen in Maastricht en Leeuwarden, 2016
+        <div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+   						 Stad selector <span class="caret"></span>
+ 				</button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a class="m" value="Leeuwarden" href="#">Leeuwarden</a></li>
+                    <li><a class="m" value="Maastricht" href="#">Maastricht</a></li>
+                </ul>
+            </div>
+    	</div>
+    <div id="graph" class="lines">
+        <svg width="960" height="500"></svg>
+    </div>
+    <p>Bron: <a href="http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi">KNMI</a></p>
+</body>
+</html>

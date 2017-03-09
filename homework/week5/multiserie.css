@@ -1,0 +1,17 @@
+/*╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+  ╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+  ╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+student number 10872809, feb 2017 
+WEEKOPDRACHT 5, Interactive multiserie linegraph IN D3*/
+
+body {
+    background-color: whitesmoke;
+}
+
+.text{
+	font-family: verdana;
+}
+
+#graphtitle{
+	font-size:25px;
+}
