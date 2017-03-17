@@ -30,7 +30,7 @@ function ready(error, worldpopulation, agegroups) {
 };
 
 
-function drawBars(){
+function drawBars(agegroups){
 var margin = {top: (parseInt(d3.select('body').style('width'), 10)/10), right: (parseInt(d3.select('body').style('width'), 10)/20), bottom: (parseInt(d3.select('body').style('width'), 10)/5), left: (parseInt(d3.select('body').style('width'), 10)/20)},
     width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
     height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
@@ -66,12 +66,12 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-// dataset = [
+dataset = agegroups;
 //     {CountryName:"Men", "Not Satisfied":20, "Not Much Satisfied":10, "Satisfied": 50, "Very Satisfied":20},
 //     {CountryName:"Women", "Not Satisfied":15, "Not Much Satisfied":30, "Satisfied":40, "Very Satisfied":15}
 // ];
 
-d3.json("agegroups.json", function(dataset) {
+// d3.json("agegroups.json", function(dataset) {
   //   dataset.forEach(function(d) {
   //   d["0 to 14"] = +d["0 to 14"];
   //   d["15 to 64"] = +d["15 to 64"];
@@ -82,21 +82,26 @@ d3.json("agegroups.json", function(dataset) {
   Object.keys(dataset).forEach(function(key) {
 
     console.log("key :",key, "dataset[key] :",dataset[key]);
-
+    console.log("Object.keys(dataset[key].[0]) :", Object.keys(dataset[key]));
     });
 
   console.log("Object.keys(dataset[Aruba]) :", Object.keys(dataset["Aruba"]));
+  console.log("Object.values(dataset[Aruba]) :", Object.values(dataset["Aruba"]));
 
-var ageRanges = d3.keys(dataset[1]).filter(function(key) { return key !== Object.keys(dataset["Aruba"]); });
-console.log(ageRanges)
+// var indexValues = Object.keys(dataset[0]).map(function (key) { return dataset[key].index; } );
+// console.log("index :",indexValues)
 
-dataset.forEach(function(d) {
-    d.valores = ageRanges.map(function(name) { return {name: name, value: +d[name]}; });
-});
+var ageRanges = Object.keys(dataset).map(function (key) { return Object.values(dataset[key]) } );
+//var ageRanges = Object.keys(dataset).map(function(key) { return key !== Object.values(dataset["Aruba"]); });
+console.log("ageranges :",ageRanges)
 
-x0.domain(dataset.map(function(d) { return d.CountryName; }));
-x1.domain(ageRanges).rangeRoundBands([0, x0.rangeBand()]);
-y.domain([0, d3.max(dataset, function(d) { return d3.max(d.valores, function(d) { return d.value; }); })]);
+// dataset.forEach(function(d) {
+//   d.valores = ageRanges.map(function(name) { return {name: name, value: +d[name]}; });
+// });
+
+x0.domain(Object.keys(dataset).map(function(d) { return Object.keys(dataset["Aruba"]); }));
+x1.domain(Object.keys(dataset["Aruba"])).rangeRoundBands([0, x0.rangeBand()]);
+y.domain([0, d3.max(dataset, function(d) {return Object.values(dataset[key]);  })]);
 
 svg.append("g")
     .attr("class", "x axis")
@@ -165,7 +170,7 @@ legend.append("text")
     .attr("dy", ".35em")
     .style("text-anchor", "end")
     .text(function(d) { return d; });
- });  
+ // });  
  }; 
 
     // based on code from https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
