@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 
+╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+student number 10872809, maart 2017 
+WEEKOPDRACHT 6, Linked Views IN D3 
+
+USE python -m SimpleHTTPServer 8888 for local server 
+
+//-->
+    <title>Worldpopulation</title>
+    <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//d3js.org/queue.v1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="datamaps.world.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="linkview.css">
+</head>
+<body>
+    <div id="name" class="text">Peter van Twuyver, opdracht 6 Dataprocessing</div>
+    <hr>
+    <div id="container" style="width: 800px; height: 500px;"></div>
+<svg id="piechart" width="455" height="250"></svg>
+<script src="linkview.js"></script>
+</body>

@@ -1,0 +1,23 @@
+/*╔═╗┌─┐┌┬┐┌─┐┬─┐  ┬  ┬┌─┐┌┐┌  ╔╦╗┬ ┬┬ ┬┬ ┬┬  ┬┌─┐┬─┐
+  ╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
+  ╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
+student number 10872809, maart 2017 
+WEEKOPDRACHT 6, Linked Views IN D3*/
+
+
+/* layout piechart*/
+.arc text {
+  font: 15px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+/* legend piechart*/
+.legend rect {
+ fill:white;
+ stroke:black;
+ opacity:0.8; }
+

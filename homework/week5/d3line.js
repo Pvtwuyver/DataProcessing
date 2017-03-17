@@ -34,15 +34,21 @@ window.onload = function() {
     // on click, update datafile 		
     d3.selectAll(".m")
         .on("click", function() {
-            var datafile;
-            var city = this.getAttribute("value");
-            if (city == "Leeuwarden") {
-                datafile = "leeuwarden.json";
-                document.getElementById("demo").innerHTML = "Temperaturen Leeuwarden:";
-            } else if (city == "Maastricht") {
-                datafile = "maastricht.json";
-                document.getElementById("demo").innerHTML = "Temperaturen Maastricht:";
-            }
+            var datafile = this.getAttribute("value") + ".json";
+            document.getElementById("demo").innerHTML = "Temperaturen " + this.getAttribute("value");
+
+            // var datafile = "leeuwarden.json";
+            // document.getElementById("demo").innerHTML = "Temperaturen Leeuwarden:";
+
+            // var datafile;
+            // var city = this.getAttribute("value");
+            // if (city == "Leeuwarden") {
+            //     datafile = "leeuwarden.json";
+            //     document.getElementById("demo").innerHTML = "Temperaturen Leeuwarden:";
+            // } else if (city == "Maastricht") {
+            //     datafile = "maastricht.json";
+            //     document.getElementById("demo").innerHTML = "Temperaturen Maastricht:";
+            // }
             // update the data in graph
             updateGraph(datafile);
         });
