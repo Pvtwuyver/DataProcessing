@@ -83,6 +83,7 @@ dataset = agegroups;
 
     console.log("key :",key, "dataset[key] :",dataset[key]);
     console.log("Object.keys(dataset[key].[0]) :", Object.keys(dataset[key]));
+
     });
 
   console.log("Object.keys(dataset[Aruba]) :", Object.keys(dataset["Aruba"]));
@@ -250,8 +251,8 @@ function drawMap(worldpopulation){
             },
                  done: function(datamap) {
             datamap.svg.selectAll('.datamaps-subunit').on('click', function(countrySelection) {
-            alert(countrySelection.properties.name);
-
+           // SEND COUNTRYNAME TO BARCHART 
+console.log(countrySelection.properties.name);
         });},
         });
 
