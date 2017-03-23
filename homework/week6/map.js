@@ -237,7 +237,9 @@ window.onload = function() {
                 done: function(datamap) {
                     datamap.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
                         // send countrycode to clickCountry function
-                        var code = geo.id
+                        var code = geo.id;
+                        var location = geo.properties.name;
+                        document.getElementById("demo").innerHTML = "Selected :" + location;
                         clickCountry(code);
                     });
                 },
