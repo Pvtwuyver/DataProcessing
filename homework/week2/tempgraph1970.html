@@ -154,7 +154,7 @@ Displays the average temperature in De Bilt in the year 1970
                         var millsec = (date.getTime()) + 3600000;
                         var temp = parseInt(chunk[1]);
                         // create new array in prefered order
-                        newArray.push([millsec, temp, date, day]);
+                        newArray.push({millsec, temp, date, day});
                     }
                     return newArray;
                 }

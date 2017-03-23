@@ -26,11 +26,11 @@ USE python -m SimpleHTTPServer 8888 for local server
 	<div id="main">
 		<div id="title" class="text"><h4> Worldpopulation in 2015 per country (in milions)</h4></div>
 		<div id="legend" class="text"><!-- Legend container --></div>
-		<div id="colorlegend" class="text">Colors are based on 2015.</div>
+		<div id="colorlegend" class="text">Colors are based on 2015. (No color means no data is available for that region.)</div>
+
 		<div id="container" style="width: 800px; height: 500px;"></div>
-		<div id="barchart" class="chart">
-		<svg width="400" height="400"></svg>
-		</div>	
+
+		<div id="barchart" class="chart" ></div>	
 		
 	</div>
 <div id="source" class="text">Source: <a href="http://data.worldbank.org/indicator/SP.POP.TOTL?end=2015&start=1969">The World Bank</a> Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.</div>

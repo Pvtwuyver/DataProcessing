@@ -31,83 +31,41 @@ body {
 /*#barchart {
   float: right;
   background: whitesmoke;
-}
-*/
-/* barchart*/
+}*/
 
-text{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
-.toolTip {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    position: absolute;
-    display: none;
-    width: auto;
-    height: auto;
-    background: none repeat scroll 0 0 white;
-    border: 0 none;
-    border-radius: 8px 8px 8px 8px;
-    box-shadow: -3px 3px 15px #888888;
-    color: black;
-    font: 12px sans-serif;
-    padding: 5px;
-    text-align: center;
+.bar{
+    fill: #de2d26;
+ }
+
+.bar:hover{
+    fill: red;
 }
 
-.legend {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 60%;
+.title {
+    font: 15px sans-serif;
 }
 
-rect {
-    stroke-width: 2;
+.axis {
+    font: 10px sans-serif;
 }
 
-text {
-  font: 10px sans-serif;
-}
-
-.axis text {
-  font: 10px sans-serif;
-}
-
-.axis path{
-  fill: none;
-  stroke: #000;
-}
-
+.axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
 
-.axis .tick line {
-  stroke-width: 1;
-  stroke: rgba(0, 0, 0, 0.2);
-}
-
-.axisHorizontal path{
-  fill: none;
-}
-
-.axisHorizontal line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.axisHorizontal .tick line {
-  stroke-width: 1;
-  stroke: rgba(0, 0, 0, 0.2);
-}
-
-.bar {
-  fill: steelblue;
-  fill-opacity: .9;
-}
-
-.x.axis path {
-  display: none;
+hover.tooltip { 
+    position: absolute;     
+    text-align: left;     
+    width: 150px;         
+    height: 90px;         
+    padding: 2px;       
+    font: 12px arial, sans-serif;   
+    background: #fee0d2;  
+    border: 0px;    
+    border-radius: 8px;     
+    pointer-events: none;     
 }
