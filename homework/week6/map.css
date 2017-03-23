@@ -2,7 +2,7 @@
   ╠═╝├┤  │ ├┤ ├┬┘  └┐┌┘├─┤│││   ║ ││││ │└┬┘└┐┌┘├┤ ├┬┘
   ╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
 student number 10872809, feb 2017 
-WEEKOPDRACHT 4, Worldmap with Countrypopulation IN D3*/
+WEEKOPDRACHT 6, Worldmap with linkedview*/
 
 body {
     background-color: whitesmoke;
@@ -24,15 +24,14 @@ body {
 	font: 10px sans-serif;	
 	text-align: left;
 }
-#container {
-  float: left;
+.container {
+  position: left;
   background: whitesmoke;
 }
-/*#barchart {
-  float: right;
+.barchart {
+  position: right;
   background: whitesmoke;
-}*/
-
+}
 
 .bar{
     fill: #de2d26;

@@ -5,8 +5,7 @@
 // WEEKOPDRACHT 6-7
 window.onload = function() {
 
-
-var globalAgegroups = {};
+    var globalAgegroups = {};
     d3.queue()
         .defer(d3.json, "worldpopulation.json", function(error, worldpopulation) {
             if (error) throw error;
@@ -16,183 +15,148 @@ var globalAgegroups = {};
         .defer(d3.json, "landcodes.json", function(error, agegroups) {
             if (error) throw error;
 
-          globalAgegroups = agegroups;
-     
+            globalAgegroups = agegroups;
+
         })
-        // send to drawBars function
-        // callBack = function(country) {
-        //     drawBars(country);}
         .await(ready);
 
     function ready(error, worldpopulation, agegroups) {
         if (error) throw error;
-        console.log(worldpopulation);
-        console.log(agegroups);
     };
-
-    function clickCountry(code){
-console.log(globalAgegroups);
-drawBars(globalAgegroups[code], code)
+    // provide country specific age-data to the drawBars function
+    function clickCountry(code) {
+        drawBars(globalAgegroups[code], code)
     }
-    // var setupGraph = function() {
-    //     var svg = d3.select("body").select("svg");
-    //     svg.selectAll("*").remove();
-    //     return svg;
-    // }
 
     function drawBars(agegroups, country) {
+        //remove previous svg when present
+        var svg = d3.select("#barchart_svg");
+        if (svg !== undefined)
+            svg.remove();
 
+        var margin = {
+                top: 20,
+                right: 20,
+                bottom: 200,
+                left: 100
+            },
+            width = 3000 - margin.left - margin.right,
+            height = 600 - margin.top - margin.bottom;
 
+        // set the ranges, small gap between the bars (0.5)
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], .5);
+        var y = d3.scale.linear().range([height, 0]);
 
-var svg = d3.select("#barchart_svg");
-    if (svg !== undefined)
-    svg.remove();  
+        // create the tooltip for hover effect (based on W3schools.com)
+        var hover = d3.select("body").append("hover")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
 
+        // create x axis at bottom
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom")
 
-var margin = {
-        top: 20,
-        right: 20,
-        bottom: 200,
-        left: 100
-    },
-    width = 5000 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+        // create y axis on left side
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(20);
 
-// set the ranges, small gap between the bars (0.05)
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .5);
-var y = d3.scale.linear().range([height, 0]);
+        // svg element in body
+        var svg = d3.select("#barchart").append("svg")
+            .attr("id", "barchart_svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
 
-// create the tooltip for hover effect (based on W3schools.com)
-var hover = d3.select("body").append("hover")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
-
-// create x axis at bottom
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-
-// create y axis on left side
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(20);
-
-// svg element in body
-var svg = d3.select("#barchart").append("svg")
-    .attr("id", "barchart_svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
-
-console.log(globalAgegroups[country])   
-var dataset = {country:globalAgegroups[country]};
-
-var CountryName;
-var ages;
-var percentages;
-var singleCountry=[];
+        // create new dataset for one selected country
+        var dataset = {
+            country: globalAgegroups[country]
+        };
+        var CountryName;
+        var ages;
+        var percentages;
+        var singleCountry = [];
 
         Object.keys(dataset).forEach(function(key) {
-            console.log("KEY :", key, "dataset[key] :", dataset[key]);
-            //console.log("Object.keys(dataset[key].[0]) :", Object.keys(dataset[key]));
-            console.log("Object.KEYS(dataset[key]) :", Object.keys(dataset[key]));
-            console.log("Object.VALUES(dataset[key]) :", Object.values(dataset[key]));
-
             CountryName = key;
             ages = Object.keys(dataset[key]);
             percentages = Object.values(dataset[key]);
+            singleCountry.push([CountryName, ages, percentages]);
+        });
 
-singleCountry.push([CountryName,ages,percentages]);
-
-                    });
-console.log("countryName :",CountryName)
-console.log("ages :",ages)
-console.log("perc :",percentages)
-console.log("singleCountry :",singleCountry)
-// scale the range of the data
-
-
-        x.domain(singleCountry[0][2])
+        // scale the range of the data
         x.domain(singleCountry[0][2]).rangeRoundBands([0, x.rangeBand()]);
         y.domain([0, 100])
 
-    // chart title
-    svg.append('text')
-        .attr("class", "title")
-        .text('Population by age in 1960 and 2015')
-        .attr('x', 200)
-        .attr('y', 0)
-        .attr('fill', 'black')
-    // x axis title
-    svg.append('text')
-        .attr("class", "axis")
-        .text('(Agegroups)')
-        .attr('x', 850)
-        .attr('y', 400)
-        .attr('fill', 'black')
-    // append the two axis
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis)
-        .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", "-.55em")
-        // rotate text for readability
-        .attr("transform", "rotate(-45)");
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-        .append("text")
-        .attr("transform", "rotate(-0)")
-        .attr("y", -10)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Percentage of population");
+        // barchart title
+        svg.append('text')
+            .attr("class", "title")
+            .text('Distribution agegroups 0-14 years/ 15-66 years/ 65+ in 1960 and 2015 ')
+            .attr('x', 100)
+            .attr('y', 0)
+            .attr('fill', 'black')
+        // x axis title
+        svg.append('text')
+            .attr("class", "axis")
+            .text('(Agegroups)')
+            .attr('x', 550)
+            .attr('y', 400)
+            .attr('fill', 'black')
+        // append the two axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis)
+            .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", "-.55em")
+            // rotate text for readability
+            .attr("transform", "rotate(-45)");
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-0)")
+            .attr("y", -20)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Percentage");
 
-    // create barchart based on Total responsetime
-    console.log(singleCountry[0][2])
-    svg.selectAll("bar")
-        .data(singleCountry[0][2])
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d,i) {
-            console.log("d ;",d)
-            console.log("i ;",i)
-            return x(d)
-        })
-        .attr("width", x.rangeBand())
-        .attr("y", function(d, i) {
-            console.log(((d)));
-            return y(d)
-        })
-        .attr("height", function(d, i) {
-            return height - y(d)
-        })
-        // hover function with additiona information window
-        // based on code from W3schools.com
-        .on("mouseover", function(d) {
-            hover.transition()
-                .duration(200)
-                .style("opacity", .9);
-            hover.html("<b>" + Number(d).toFixed(2)  + "% of total population"+ "</b>" )
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 128) + "px");
-        })
-        .on("mouseout", function(d) {
-            hover.transition()
-                .duration(500)
-                .style("opacity", 0);
-        });
-}
-
-
-
-
+        // create barchart 
+        svg.selectAll("bar")
+            .data(singleCountry[0][2])
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d, i) {
+                return x(d)
+            })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d, i) {
+                return y(d)
+            })
+            .attr("height", function(d, i) {
+                return height - y(d)
+            })
+            // hover function with additiona information window
+            .on("mouseover", function(d) {
+                hover.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                hover.html("<b>" + Number(d).toFixed(2) + "% of total population" + "</b>")
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 128) + "px");
+            })
+            .on("mouseout", function(d) {
+                hover.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+    }
 
     // based on code from https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started
     function drawMap(worldpopulation) {
@@ -202,10 +166,10 @@ console.log("singleCountry :",singleCountry)
             if (error) throw (error);
             data.forEach(function(d) {
                 // change strings into real numbers
-                d.tweeduizendvijftien = +d.tweeduizendvijftien;
+                d.year2015 = +d.year2015;
                 d.sixty = +d.sixty;
                 // create new array with prefered format
-                series.push([d.CountryCode, d.tweeduizendvijftien, d.sixty]);
+                series.push([d.CountryCode, d.year2015, d.sixty]);
             });
 
             var datasetMap = {};
@@ -265,20 +229,19 @@ console.log("singleCountry :",singleCountry)
                         return ['<div class="hoverinfo">',
                             '<strong>', geo.properties.name, '</strong>',
                             '<br>Population in 2015: <strong>', data.Population / 1000000, '</strong>', ' Milion',
+                            '<br>Population in 1960: <strong>', data.sixtyPopulation / 1000000, '</strong>', ' Milion',
                             '</div>'
                         ].join('');
                     }
                 },
                 done: function(datamap) {
                     datamap.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
-                        // SEND COUNTRYCODE TO BARCHART data
+                        // send countrycode to clickCountry function
                         var code = geo.id
-                        console.log(code);
                         clickCountry(code);
                     });
                 },
             });
-
             // create legendbar:
             // based on code from https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient.html
             // create new svg element in body
