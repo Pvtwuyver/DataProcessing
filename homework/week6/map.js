@@ -36,7 +36,7 @@ window.onload = function() {
 
         var margin = {
                 top: 20,
-                right: 20,
+                right: 50,
                 bottom: 200,
                 left: 50
             },
