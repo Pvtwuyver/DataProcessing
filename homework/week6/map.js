@@ -38,7 +38,7 @@ window.onload = function() {
                 top: 20,
                 right: 20,
                 bottom: 200,
-                left: 10
+                left: 50
             },
             width = 400 - margin.left - margin.right,
             height = 600 - margin.top - margin.bottom;
@@ -96,7 +96,7 @@ window.onload = function() {
         // barchart title
         svg.append('text')
             .attr("class", "title")
-            .text('Distribution 0-14y/ 15-66y/ 65+ in 1960 and 2015 (%) ')
+            .text('Distribution 0-14y/ 15-66y/ 65+ in 1960 and 2015')
             .attr('x', 10)
             .attr('y', 0)
             .attr('fill', 'black')
