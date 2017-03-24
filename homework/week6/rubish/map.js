@@ -38,17 +38,17 @@ window.onload = function() {
                 top: 20,
                 right: 20,
                 bottom: 200,
-                left: 10
+                left: 100
             },
-            width = 400 - margin.left - margin.right,
+            width = 3000 - margin.left - margin.right,
             height = 600 - margin.top - margin.bottom;
 
-        // set the ranges
+        // set the ranges, small gap between the bars (0.5)
         var x = d3.scale.ordinal().rangeRoundBands([0, width], .5);
         var y = d3.scale.linear().range([height, 0]);
 
         // create the tooltip for hover effect (based on W3schools.com)
-        var hover = d3.select("#barchart_hover")
+        var hover = d3.select("body").append("hover")
             .attr("class", "tooltip")
             .style("opacity", 0);
 
@@ -89,15 +89,14 @@ window.onload = function() {
         });
 
         // scale the range of the data
-        // x-axis should read singleCountry[0][1] data but draws only one bar then
-        x.domain(singleCountry[0][2]); 
+        x.domain(singleCountry[0][2]).rangeRoundBands([0, x.rangeBand()]);
         y.domain([0, 100])
 
         // barchart title
         svg.append('text')
             .attr("class", "title")
-            .text('Distribution 0-14y/ 15-66y/ 65+ in 1960 and 2015 (%) ')
-            .attr('x', 10)
+            .text('Distribution agegroups 0-14 years/ 15-66 years/ 65+ in 1960 and 2015 ')
+            .attr('x', 100)
             .attr('y', 0)
             .attr('fill', 'black')
         // x axis title
@@ -240,7 +239,6 @@ window.onload = function() {
                         // send countrycode to clickCountry function
                         var code = geo.id;
                         var location = geo.properties.name;
-                        // present selected country in barchart HTML
                         document.getElementById("demo").innerHTML = "Selected :" + location;
                         clickCountry(code);
                     });

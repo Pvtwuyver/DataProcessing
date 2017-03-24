@@ -8,7 +8,9 @@
 ╩  └─┘ ┴ └─┘┴└─   └┘ ┴ ┴┘└┘   ╩ └┴┘└─┘ ┴  └┘ └─┘┴└─  
 student number 10872809, Mar 2017 
 WEEKOPDRACHT 6-7, 
+
 USE python -m SimpleHTTPServer 8888 for local server 
+
 //-->
     <title>Worlpopulation</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -24,22 +26,17 @@ USE python -m SimpleHTTPServer 8888 for local server
     <div id="name" class="text">Peter van Twuyver, opdracht 6 Dataprocessing</div>
     <hr>
     <div id="main">
-        <div id="map_container">
-            <div id="title" class="text">
-                <h4> Worldpopulation and age-distribution per country </h4>
-            </div>
-            <div id="legend" class="text"></div>
-
-            <div id="colorlegend" class="text">Colors are based on 2015. (No color means no data is available for that region.)</div>
-
-            <div id="container" style="width: 800px; height: 500px;"></div>
+        <div id="title" class="text">
+            <h4> Worldpopulation and age-distribution per country </h4>
         </div>
-        <div id="graph_container">
-            <p id="demo">Select country.</p>
+        <div id="legend" class="text"></div>
 
-            <div id="barchart" class="chart"></div>
-            <hover id="barchart_hover"/>
-        </div>
+        <div id="colorlegend" class="text">Colors are based on 2015. (No color means no data is available for that region.)</div>
+
+        <div id="container" style="width: 800px; height: 500px;"></div>
+        <p id="demo">Select country.</p>
+
+        <div id="barchart" class="chart"></div>
 
     </div>
     <div id="source" class="text">Source Population and Age Distribution: <a href="http://data.worldbank.org/indicator/SP.POP.TOTL?end=2015&start=1969">The World Bank</a> Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The population values shown are midyear estimates.</div>
